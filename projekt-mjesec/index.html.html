@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Viktorija Đurđa</title>
+        <style>
+            /* --- Generalno --- */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: system-ui, -apple-system, sans-serif;
+                background-color: #d3bfd3;
+                color: #210124;
+                line-height: 1.6;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            main {
+                flex: 1;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            img {
+                display: block;
+                margin: 10px auto;
+            }
+            a {
+                transition: 0.2s ease;
+            }
+            a:hover {
+                opacity: 0.7;
+            }
+            /* --- Navbar --- */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                background-color: #542b5f;
+                padding: 15px 20px;
+            }
+            .navbar a {
+                color: #c0a4c1;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            .navbar a:hover {
+                color: whitesmoke;
+            }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #c0a4c1;
+                min-width: 300px;
+                border-radius: 5px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                margin-top: 5px;
+            }
+            .dropdown-content p {
+                color: #210124;
+                display: block;
+                padding: 5px;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            .dropdown-content a {
+                color: black;
+                display: block;
+                padding: 5px;
+                font-weight: normal;
+                text-shadow: none;
+            }
+            .dropdown-content a:hover {
+                background-color: whitesmoke;
+                color: #210124;
+            }
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            /* --- Header --- */
+            header {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            header h1 {
+                color: #210124;
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            /* --- Sadrzaj --- */
+            .layout {
+                display: flex;
+                gap: 30px;
+                align-items: flex-start;
+            }
+            .left {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                max-width: 500px;
+            }
+            .sadrzaj {
+                background-color: #c0a4c1;
+                padding: 15px;
+                border-radius: 10px;
+                max-width: 500px;
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .sadrzaj ul {
+                list-style: none;
+            }
+            .sadrzaj li {
+                margin-bottom: 8px;
+            }
+            .sadrzaj a {
+                color: #210124;
+            }
+            .sadrzaj a:hover {
+                color: #542b5f;
+                text-decoration: underline;
+            }
+            /* --- Stranica --- */
+            .main-content {
+                flex: 1;
+            }
+            section {
+                margin-bottom: 40px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            section h2,
+            section h3,
+            section img,
+            #wiki {
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            section h3 {
+                font-style: italic;
+                font-weight: normal;
+                margin-bottom:  10px;
+            }
+            #wiki a{
+                color: #210124;
+            }
+            .large-pics {
+                max-width: 900px;
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .medium-pics{
+                max-width: 600px;
+                width: 100%;
+                height: auto;
+                border-radius: 25px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .small-pics {
+                max-width: 400px;
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .opis {
+                text-align: left;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .opis ul {
+                margin-bottom: 10px;
+            }
+            .opis a {
+                color: #210124;
+            }
+            .opis a:hover {
+                color: black;
+            }
+            /* --- button --- */
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                left: 30px;
+                z-index: 99;
+                border: black solid 1px;
+                outline: none;
+                background-color: #542b5f;
+                color: white;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 10px;
+                font-size: 18px; 
+            }
+            #myBtn:hover {
+            background-color: #4d2d50;
+            }
+            /* --- reklame ---- */
+            #angelica-kauffmann-ad {
+                max-width: 1200px;
+                height: 200px;
+            }
+            #yba-ad {
+                max-width: 500px;
+                height: 200px;
+            }
+            #met-ad {
+                max-width: 900px;
+                height: 200px;
+            }
+            
+            /* --- Footer --- */
+            .footer{
+                background-color: #542b5f;
+                color: #c0a4c1;
+                padding: 40px;
+                margin-top: 20px;
+            }
+            .footer-content {
+                display: flex;
+                justify-content: center;
+                gap: 100px;
+                flex-wrap: wrap;
+            }
+            .footer a {
+                color: #c0a4c1;
+                text-decoration: none;
+            }
+            .footer-content a:hover {
+                color:#935FA7;
+            }
+            /* --- tableti --- */
+            @media (max-width: 1024px) {
+                main {
+                    padding: 15px;
+                }
+                .layout {
+                    gap: 20px
+                }
+            }
+            /* --- mobitel --- */
+            @media (max-width: 768px) {
+                body {
+                    font-size: 15px;
+                    line-height: 1.5;
+                }
+                main {
+                    padding: 10px;
+                }
+                .navbar {
+                    flex-direction: row;
+                    gap: 10px;
+                    justify-content: space-between;
+                }
+                .navbar a {
+                    font-size: 16px;
+                }
+                .layout {
+                    flex-direction: column;
+                    gap: 15px
+                }
+                .left {
+                    max-width: 100%;
+                    width: 100%;
+                }
+                .sadrzaj {
+                    max-width: 100%;
+                    width: 60%;
+                }
+
+                .sadrzaj h2 {
+                    font-size: 18px;
+                }
+
+                .sadrzaj a {
+                    font-size: 14px;
+                }
+                header h1 {
+                    font-size: 1.6rem;
+                }
+                section {
+                    margin-left: 20px;
+                }
+                section h2 {
+                    font-size: 1.3rem;
+                }
+
+                section h3 {
+                    font-size: 1rem;
+                }
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+                .large-pics,
+                .medium-pics,
+                .small-pics {
+                    max-width: 80%;
+                }
+                .opis {
+                    font-size: 15px;
+                    padding: 0 5px;
+                }
+                #angelica-kauffmann-ad,
+                #met-ad,
+                #yba-ad {
+                    max-width: 100%;
+                    height: auto;
+                }
+                #myBtn {
+                    bottom: 15px;
+                    left: 15px;
+                    padding: 10px;
+                    font-size: 14px;
+                }
+                .footer-content {
+                    flex-direction: row;
+                    gap: 20px;
+                    justify-content: space-between;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="projekt2.html">Viktorija Đurđa</a>
+            <div class="dropdown">
+                <a href="#" id="pokreti">Pokreti▾</a>
+                <div class="dropdown-content">
+                    <p>Antika</p>
+                    <a href="#belvedre-apollo">Apolon Belvederski (AD 120. - 140.)</a>
+                    <p>Renesansa</p>
+                    <a href=#victorious-apollo">Apollo pobjednički nad Pitonom (1591.)</a>
+                    <a href="#lucretia">Lukrecija Ubada Sebe (15.-16. st.)</a>
+                    <a href="#apollo">Apolon (16.st.)</a>
+                    <a href="#toad">Krastača s krastačom (16.st.)</a>
+                    <p>Neoklasicizam</p>
+                    <a href="#fan">Dizajn za lepezu (1775.)</a>
+                    <a href="#venus">Trijumf Venere s tri gracije (18.st.)</a>
+                    <a href="#latona">Latona i njezina djeca, Apolon i Dijana (1870./74.)</a>
+                    <p>Romantizam</p>
+                    <a href="#italian-coast">Prizor talijanske obale s ruševnim tornjem (1838.)</a>
+                    <p>Rokoko</p>
+                    <a href="#music">Alegorija glazbe (1764.)</a>
+                    <p>Luminizam</p>
+                    <a href="#orchid">Orhideja Cattleya i tri kolibrija (1871.)</a>
+                    <p>Škola rijeke Hudson</p>
+                    <a href="#parthenon">Ruševine Partenons (1880.)</a>
+                    <a href="#spirit">Duh rata (1851.)</a>
+                </div>
+                <a href="#" id="umjetnici">Umjetnici▾</a>
+                <div class="dropdown-content">
+                    
+                </div>
+            </div>
+            <a href="about.html">About</a>
+        </nav>
+        <main>
+            <div class="ads" id="angelica-kauffmann-ad">
+                <a href="https://en.wikipedia.org/wiki/Angelica_Kauffman" target="_blank">
+                    <img src="angelica-kauffmann-ad.png">
+                </a>
+            </div>
+            <div class="layout">
+                <div class="left">
+                    <aside class="sadrzaj">
+                        <h2>Sadržaj</h2>
+                        <nav>
+                            <ul>
+                                <li><a href="#fan">1. Dizajn za lepezu (1775.)</a>
+                                <li><a href="#venus">2. Trijumf Venere s tri gracije (18.st.)</a>
+                                <li><a href="#music">3. Alegorija glazbe (1764.)</a>
+                                <li><a href="#orchid">4. Orhideja Cattleya i tri kolibrija (1871.)</a>
+                                <li><a href="#italian-coast">5. Prizor talijanske obale s ruševnim tornjem (1838.)</a>
+                                <li><a href="#parthenon">6. Ruševine Partenons (1880.)</a>
+                                <li><a href="#spirit">7. Duh rata (1851.)</a>
+                                <li><a href="#belvedre-apollo"> 8. Apolon Belvederski (AD 120. - 140.)</a>
+                                <li><a href="#victorious-apollo">9. Apollo pobjednički nad Pitonom (1591.)</a>
+                                <li><a href="#latona">10. Latona i njezina djeca, Apolon i Dijana (1870./74.)</a>
+                                <li><a href="#lucretia">11. Lukrecija Ubada Sebe (15.-16. st.)</a>
+                                <li><a href="#apollo">12. Apolon (16.st.)</a>
+                                <li><a href="#toad">13. Krastača s krastačom</a>
+                                <li><a href="#amazon">14. Amazonka ili Venera (1882.)</a>
+                            </ul>
+                        </nav>
+                    </aside>
+                    <div class="ads" id="yba-ad">
+                            <a href="https://britishart.yale.edu/" target="_blank"><img src="yba-ad.png"></a>
+                    </div>
+                </div>
+                <button onclick="topFunction()" id="myBtn" title="Go to Top">↑ Vrati se na početak</button>
+                <div class="main-content">
+                    <header>
+                        <h1 id="naslov1">Multimedijalni sustavi</h1>
+                        <p>
+                            Ova stranica je izrađena kao projekt za vježbe kolegija Multimedijalni sustavi.
+                            <br> Ovdje možete pronaći moja omiljena umjetnička djela i malo informacija o njima
+                        </p>
+                    </header>
+                    <section class="content" id="fan">
+                        <h2 class="hr-naslov">Dizajn za lepezu (1775.)</h2>
+                        <h3 class="eng-naslov">Fan design</h3>
+                        <img src="Angelica_Kauffman_-_Design_for_a_Fan_-_B1975.3.1237_-_Yale_Center_for_British_Art.jpg" alt="Dizajn fena Angelice Kauffman" class="large-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Angelica_Kauffman_-_Design_for_a_Fan_-_B1975.3.1237_-_Yale_Center_for_British_Art.jpg" target="_blank">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Angelica_Kauffman" target="_blank">Angelica Kauffman (1741 - 1807)</a>
+                                <li>Teksturiran, krema tanki papir
+                                <li>Dimenzije: 17.1 × 53.3 cm.
+                                <li>Umjetnički pokret: Neoklasicizam
+                                <li>Trenutačno je izložen u <a href="https://collections.britishart.yale.edu/catalog/tms:11060" target="_blank">Yale Centeru za Britansku Umjetnost.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Na dizajnu za lepezu su prikazane tri ženske figure koji personificiraju umjetnost; slikarstvo, crtanje i kiparstvo.<br>
+                                <br>Angelica Kauffman (puno ime: Maria Anna Angelika Kauffman) je bila Švicarska umjetnica. Uz Mary Moser, bila je jedna od dvije ženske slikarice među osnivačima Kraljevske akademije umjetnosti u Londonu 1768. godine. Zapamćena je primarno kao slikarica povijesti, ali je bila i vješta u slikanju portreta, pejzaža i dekoracija. <br>
+                                Također je bila talentirana pjevačića. Kauffman je bila prisiljena odabrati između umjetnosti i opere. Inspirirajući njezinu sliku <a href="https://commons.wikimedia.org/wiki/File:Angelica_Kauffman._Self-Portrait_Hesitating_Between_the_Arts_of_Music_and_Painting.jpg" target="_blank">"Self-Portrait of the Artist Hesitating between the Arts of Music and Painting".</a><br>
+                                <br>Njezina identifikacija kao primarno povijesni slikar je bila neobična oznaka za umjetnicu u 18. stoljeuću. Povijesno slikarstvo, kako je definirano u akademskoj teoriji umjetnosti, klasificirano je kao najuzvišenija kategorija koja je zahtijevala opsežno učenje biblijske i klasične književnosti, poznavanje teorije umjetnosti i praktičnu obuku koja je uključivala proučavanje anatomije s muškog akta. Većini žena bio je uskraćen pristup takvoj obuci, posebno prilika da crtaju s aktova modela; no Kauffman je uspjela prijeći rodnu granicu.
+                                Zanimljivo je da se muške figure u njezinim umjetničkim djelima smatraju ženstvenijima nego što bi većina slikara odabrala prikazati.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="venus">
+                        <h2 class="hr-naslov">Trijumf Venere s tri gracije (18.st)</h2>
+                        <h3 class="eng-naslov">The Triumph of Venus with the Three Graces</h3>
+                        <img src="The_Triumph_of_Venus_with_the_Three_Graces.jpg" class="medium-pics" alt="Trijumf Venere s tri gracije" loading="lazy">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:The_Triumph_of_Venus_with_the_Three_Graces.jpg" target="_blank">Wikimmedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Angelica_Kauffman#Exhibitions" target="_blank">Angelica Kauffman (1741. - 1807.)</a>
+                                <li>Ulje na platnu
+                                <li>Dimenzije: 64.2 × 64.7 cm
+                                <li>Umjetnički pokret: Neoklasicizam
+                                <li>Trenutačno se drži u privatnoj kolekciji nakon što je prodana 1999. u <a href="https://www.christies.com/en/lot/lot-6338035" target="_blank">Christie's London aukciji</a> zajedno sa <a href="https://commons.wikimedia.org/wiki/File:Angelica_Kauffman_-_Cymon_and_Iphigenia_-_Google_Art_Project.jpg" target="_blank">"Cimon and Iphigenia"</a>.
+                            </ul>
+                            <br>
+                            <p>
+                                Na slici je prikazana rimska božica Venera kako sjedi u kočiji. Uz nju su Tri Gracije – božice gracioznosti i ljepote – koje drže vijence od cvjieća, te jedan kerub koji kruni Veneru cvijećem i dva dva keruba koji vuću koćiju.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="music">
+                        <h2 class="hr-naslov">Alegorija glazbe (1764.)</h2>
+                        <h3 class="eng-naslov">Allegory of Music</h3>
+                        <img src="allegory_of_music_1946.7.2.jpg" class="medium-pics" alt="painting">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Fran%C3%A7ois_Boucher,_Allegory_of_Music,_1764,_NGA_32680.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Boucher" target="_blank">François Boucher (1703. - 1770.)</a>
+                                <li>Ulje na platnu
+                                <li>Dimenzije: 103.5 × 130 cm
+                                <li>Umjetnički pokret: Rokoko
+                                <li>Trenutačno izložen u <a href="https://www.nga.gov/artworks/32680-allegory-music" target="_blank">Nacionalna galerija umjetnosti, Washington, US.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Na slici je prikazna žena – ponekad tumačena kao Venera, Harmonija ili jedna od muza – koja je okružena kerubinima koji personificiraju glazbu kroz simbola harfe, flaute i notnog zapisa. Prisutne su i golubice i ruže (simboli ljubavi, uglavnom božice Venere), te kaciga i mač (simboli rata, boga Marsa koji je Venerin muž).<br>
+                                <br>François Boucher je bio Francuski umjetnik, crtač i bakropisac koji je slikao u rokoko stilu. Najviše je poznat po njegovom idiličnim i   raskošnim slikama klasičnih tema, dekorativnim alegorijama i pastoralnim scenama. 
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="orchid">
+                        <h2 class="hr-naslov">Orhideja Cattleya i tri kolibrija (1871.)</h2>
+                        <h3 class="eng-naslov">Cattleya Orchid and Three Hummingbirds</h3>
+                        <img src="cattleya_orchid_and_three_hummingbirds_1982.73.1.jpg" class="medium-pics" alt="paiting">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Martin_Johnson_Heade-Cattleya_Orchid_and_Three_Brazilian_Hummingbirds.jpg">Wikimedia Commons</p>
+                        <div class="opis">
+                            <ul>
+                                <li>Martin Johnson Heade (1819. - 1904.)
+                                <li>Ulje na mahagonijskoj ploči
+                                <li>Dimenzije: 34.8 × 45.6 cm
+                                <li>Umjetnički pokret: Luminizm
+                                <li>Trenutačno izloženo u <a href="https://www.nga.gov/artworks/61244-cattleya-orchid-and-three-hummingbirds" target="_blank">Nacionalna galerija umjetnosti, Washington, USA</a>
+                                
+                            </ul>
+                            <br>
+                            <p>
+                                Martin Johnson Heade je bio Američki slikar poznat po svojim pejzažnima močvara, mora i prikazima kolibrića, često prikazanih s orhidejama, kao i cvjetovima lotosa i drugim mrtvim prirodama. Heade nije bio široko poznat umjetnik za života, ali njegov je rad privuka pozornost učenjaka, povjesničara umjetnosti i kolekcionara tijekom 1940-ih. Brzo je postao prepoznat kao važan američki umjetnik. Iako je često smatran umjetnik škole Hudson River, neki kritičakri i učenjaci prigovaraju toj kategorizaciji. Headeova djela sada se nalaze u velikim muzejima i zbirkama. Njegove slike povremeno se otkrivaju na neobičnim mjestima poput garažnih rasprodaja i buvljaka.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="italian-coast">
+                        <h2 class="hr-naslov">Prizor talijanske obale s ruševnim tornjem (1838.)</h2>
+                        <h3 class="eng-naslov">Italian Coast Scene with Ruined Tower</h3>
+                        <img src="italian_coast_scene_with_ruined_tower_1993.55.1.jpg" class="medium-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Italian_Coast_Scene_with_Ruined_Tower-1838-Thomas_Cole.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li>Thomas Cole (1801. - 1848.)
+                                <li>Ulje na platnu
+                                <li>Dimenzije: 86.4 × 116.8 cm
+                                <li>Umjetnički pokret: Romanticism
+                                <li>Trenutačno izloženo u <a href="https://www.nga.gov/artworks/82649-italian-coast-scene-ruined-tower" target="_blank">Nacionalna galerija umjetnosti, Wahington, USA</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Thomas Cole bio je angloamerički umjetnik koji je utemeljio umjetnički pokret Hudson River School. Slikao je romantične pejzaže i povijesne slike. Njegova djela su uglavnom alegorična i često prikazuju malu figuru ili strukture postavljene nasuprot tmurnim i evokativnim prirodnim krajolicima. Obično su eskapistička, uokvirujući Novi svijet kao prirodni raj u kontrastu sa Britanskim gradskim pejzažima ispunjene smogom iz doba industirjske revolucije u kojoj je odrastao. Njegova djela, često smatrana konzervativnima, kritiziraju suvremene trendove industrijalizma, urbanizma i širenje prema zapadu.
+                            </p>
+                        </div>
+                    </section>
+                    <div class="ads" id="met-ad">
+                        <a href="https://www.metmuseum.org/" target="_blank">
+                            <img src="the-met-ad.png">
+                        </a>
+                    </div>
+                    <section class="content" id="parthenon">
+                        <h2 class="hr-naslov">Ruševine Partenona (1880.)</h2>
+                        <h3 class="eng-naslov">Ruins of the Parthenon</h3>
+                        <img src="ruins_of_the_parthenon_2014.79.20.jpg" class="large-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Ruins_of_the_Parthenon_A30220.jpg" target="_blank">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Sanford_Robinson_Gifford" target="_blank">Sanford Robinson Gifford (1823. - 1880.)</a>
+                                <li>Ulje na platnu
+                                <li>Dimenzije: 69.53 × 132.72 cm
+                                <li>Umjetnički pokret: Hudson River School
+                                <li>Trenutačno izloženo u <a href="https://www.nga.gov/artworks/121547-ruins-parthenon">Nacionalna galerija umjetnosti, Wahington, USA</a>
+                                <li>Mnogi vide ovu sliku kao odgovor na sliku <a href="https://commons.wikimedia.org/wiki/File:Parthenon_(1871)_Frederic_Edwin_Church.jpg">"The Parthenon" (1871.)</a> koju je naslikao Giffordov prijatelj Frederic Edwin Church.
+                            </ul>
+                            <br>
+                            <p>
+                                Sanford Robinson Gifford je bio američki slikar pejzaža i vodeći član druge generacije umjetnika škole Hudson River. Visoko cijenjeni praktičar luminizma, njegov rad bio je poznat po naglaskau na svjetlosti i mekim atmosferskim efektima.<br>
+                                <br>Gifford je Ruševine Partenona - svoju posljednju važnu sliku - smatrao krunskim postignućem svoje karijere i nadao se da će je otkupiti neki američki muzej. Kada je posjetio Galeriju umjetnosti Corcoran u Washingtonu, D.C., i stigao do galerije u kojoj se nalazi Churchova Niagara, primijetio je: "bilo bi dobro mjesto za moj 'Partenona'." Iako slika nije bila prodana nakon Giffordove smrti, Corcoran ju je kupio na rasprodaji svoje imovine 1881. za $5,100 dolara, što je u to vrijeme bila najviša cijena ikad plaćena za jednu od umjetnikovih slika.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="spirit">
+                        <h2 class="hr-naslov">Duh rata (1851.)</h2>
+                        <h3 class="eng-naslov">The Spirit of War</h3>
+                        <img src="the_spirit_of_war_1978.12.1.jpg" class="medium-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:The-spirit-of-war.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Jasper_Francis_Cropsey" target="_blank">Jasper Francis Cropsey (1823. - 1900.)</a>
+                                <li>Ulje na platnu
+                                <li>Dimenzije: 110.8 × 171.6 cm
+                                <li>Umjetnički pokret: Hudson River School
+                                <li>Trenutačno izložen je u <a href="https://www.nga.gov/artworks/56598-spirit-war" target="_blank">Nacionalna galerija Umjetnost, Washington, US.</a>
+                                <li>Popratno djelo: <a href="https://commons.wikimedia.org/wiki/File:Jasper_Francis_Cropsey_The_Spirit_of_Peace.jpg" target="_blank">Duh mira (The Spirit of Peace)(1851.)</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Jasper Francis Cropsey bio je američki arhitekt i umjetnik. Najbolje je poznat po njegovim pejzažnim djelima škole rijeke Hudson.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="belvedre-apollo">
+                        <h2 class="hr-naslov">Apolon Belvederski (AD 120. - 140.)</h2>
+                        <h3 class="eng-naslov">Apollo Belvedre</h3>
+                        <img src="Apollo_del_Belvedere.jpg" class="small-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Apollo_del_Belvedere.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li>Bijeli mramor
+                                <li>Dimenzije: 2,24 m
+                                <li>Umjetnički pokret: Antika
+                                <li>Alternativna imena: Belvederski Apolon, Apolon s Belvedera, Pitijski Apolon
+                                <li>Trenutačno izložen u u Cortile del Belvedere u sklopu muzeja Pio-Klementine u Vatikanskom muzeju.
+                            </ul>
+                            <br>
+                            <p>
+                                Ova skulptura prikazuje grčkog boga Apolona kao strijelca koji je upravi ispalio strijelu. Iako ne postoji suglasnot o točnom narativnom detalju koji je prikazan, konvencionalno mišljenje je da ju upravo ubio zmiju Pitona koja čuva Delfe što čini skulpturu Pitijskim Apolonom – jedno od alternatinih imena skulpture. Druga mišljenja je ubojstvo titana Titija, koji je prijetio njegovoj majci Leto, ili ubojstvo Niobidima.
+                                Skulptura se smatra da je Rimska kopija originalne brončane koju je stvorio grčki kipar Leochares. Od sredine 18. stoljeća neoklacisti je smatraju najboljom antičkom skulpturom, a stoljećima je utjelovao estetiku savršenstva za Europljane i zapadnjačke dijelove svijeta.
+                                The Apollo Belvedere was featured in the official logo of the Apollo 17 Moon landing mission in 1972.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="victorious-apollo">
+                        <h2 class="hr-naslov">Apollo pobjednički nad Pitonom</h2>
+                        <h3 class="eng-naslov">Apollo Victorious over Python</h3>
+                        <img src="PL1_27.302_Fnt_TR_T05IV.jpg" class="small-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Pietro_Francavilla_-_Apollo_Victorious_over_the_Python_-_Walters_27302.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Pietro_Francavilla">Pietro Francavilla (1548. - 1615.)</a>
+                                <li>Bijeli mramor
+                                <li>Dimenzije: 1,60.5 m
+                                <li>Umjetnički pokret: Renesansa
+                                <li>Trenutačno je izložen u <a href="https://art.thewalters.org/object/27.302/">Umjetničkom Muzeju Walters</a>
+                            </ul>
+                            <br>
+                            <p>Ova skultura predstavlja Apolonov prvi trijumf protiv Pitona koji leži mrtav pred njegovim nogama. Apolon je utjelovio ideale muške ljepote i herojstva.<br>
+                                Skulpturovo ime i datum su ugravirani su na Apolonovim prsima. Pietro Francavilla je bio francusko-flamanski kipar koji je izrađivao skulpture u kasnomanirističkoj tradicij.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="latona">
+                        <h2 class="hr-naslov">Latona i njezina djeca, Apolon i Djiana</h2>
+                        <h3 class="eng-naslov">Latona and Her Children, Apollo and Diana</h3>
+                        <img src="Latona-and-Her-Children-Apollo-and-Diana.jpg" class="medium-pics">
+                        <p id="wiki">Izvor: <a href="https://www.metmuseum.org/art/collection/search/11923">Muzej umjetnosti Metropolitan</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/William_Henry_Rinehart">William Henry Rinehart (1825. - 1874.)</a>
+                                <li>Bijeli mramor
+                                <li>Dimenzije: 117.2 × 167 × 78.8 cm
+                                <li>Umjetnički pokret: (Američki) Neoklasicizam
+                                <li>Trenutačno je izložen u <a href="https://www.metmuseum.org/art/collection/search/11923">Muzej umjetnosti Metropolitan</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Božica Latona s ljubavlju gelda svoju usnulu djecu, Apolona i Djianu. <br>
+                                William Henry Rinehart bio je pozanti američki kipar. Smatra se "posljednjim važnim američkim kipariom koji je radio u klasičnom stilu".
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="lucretia">
+                        <h2 class="hr-naslov">Lukrecija Ubada Sebe (15.-16.st.)</h2>
+                        <h3 class="eng-naslov">Lucretia Stabbing Herself</h3>
+                        <img src="lucretia_stabbing_herself_1957.14.339.jpg" class="medium-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Moderno,_Lucretia_Stabbing_Herself,_late_15th_-_early_16th_century,_NGA_44063.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Galeazzo_Mondella">Moderno (Galeazzo Mondella) (1467. - 1528.)</a>
+                                <li>Bronca/tamnosmeđa patina
+                                <li>Dimenzije: 5.12 cm
+                                <li>Umjetnički pokret: (talijanska) Renesansa
+                                <li>Trenutačno je izložena i <a href="https://www.nga.gov/artworks/44063-lucretia-stabbing-herself">Nacionoj galeriji umjetnosti, Washington, US.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Mala brončana plaketa koja prikzuje samoubojstvo rimske heroine Lukrecije kako bi sačuvala svoju čast nakon što ju je Sekst Tarkvinije, sin kralja Lucija, silovao. Njezino samoubojstvo je izazvalo pobuno koja je svrgnula rimsku monarhiju i dovela do prelaska rimske vlasti iz kraljevstva u republiku.<br>
+                                Moderno je bio talijasnki zlatar i medaljar koji je postao jedan od najvažnijig dizajnera brončanih plaketa tijekom talijanske renesanse. Svoj nadimak "Moderno" ("Moderni") dobio je 1487. na početku svoje karijere kao medaljaš na dvoru u Mantovi. Nadimak je odabro kao kontrast njegovom suvremeniku Pieru Jacopu Alari Bonacolsiju koji je iste godine nazvan "Atico" ("Drevni").
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="apollo">
+                        <h2 class="hr-naslov">Apolon</h2>
+                        <h3 class="eng-naslov">Apollo</h3>
+                        <img src="apollo_1957.14.378.jpg" class="small-pics">
+                        <p id="wiki">Izvor:
+                            <a href="https://commons.wikimedia.org/wiki/File:Paduan_16th_Century,_Apollo,_16th_century,_NGA_44104.jpg">
+                                Wikimedia Commons
+                            </a>
+                        </p>
+                        <div class="opis">
+                            <ul>
+                                <li>Padova 16.st.
+                                <li>Bronca/tamnosmeđa patina
+                                <li>Dimenzije: 6.91 × 3.71 cm
+                                <li>Umjetnički pokret: (talijanska) Renesansa
+                                <li>Trenutačno je izložen u <a href="https://www.nga.gov/artworks/44104-apollo">Nacionalnoj galeriji umjetnosti, Washington, US.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Točan umjetnik nije poznat, ali se zna da je djelo napravljeno u Padovi, Italija tijekom 16. stoljeća.<br>
+                                Na ovoj kružnoj plaketi prikazan je grčki bog Apolon koji drži liru, inspirirano klasičnom rimskom umjetnošću.
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="toad">
+                        <h2 class="hr-naslov">Krastača s krastačom</h2>
+                        <h3 class="eng-naslov">A Toad with a Toad</h3>
+                        <img src="a_toad_with_a_toad_1957.14.88.jpg" class="medium-pics">
+                        <p id="wiki">Izvor: <a href="https://commons.wikimedia.org/wiki/File:Paduan_16th_Century,_A_Toad_with_a_Toad,_early_16th_century,_NGA_43808.jpg">Wikimedia Commons</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li>Padova 16.st.
+                                <li>Bronca/tamnosmeđa patina
+                                <li>Dimenzije: 6 × 13.1 × 8.6 cm
+                                <li>Umjetnički pokret: (talijanska) Renesansa
+                                <li>Trenutačno je izložen u <a href="https://www.nga.gov/artworks/44104-apollo">Nacionalnoj galeriji umjetnosti, Washington, US.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Točan umjetnik nije poznat, ali se zna da je djelo napravljeno u Padovi, Italija tijekom 16. stoljeća.<br>
+                                Brončana skulptura koja prikazauje malu krastaču na leđim veće, često interpretirano kao uteg za papir ili ukras za stol. 
+                            </p>
+                        </div>
+                    </section>
+                    <section class="content" id="amazon">
+                        <h2 class="hr-naslov">Amazonka se priprema za borbu ili naoružana Venera (1882.)</h2>
+                        <h3 class="eng-naslov">Amazon Preparing for Battle, or Armed Venus</h3>
+                        <img src="amazon_preparing_for_battle_queen_antiope_or_hippolyta_or_armed_venus_1987.25.1.jpg" class="small-pics">
+                        <p id="wiki">Izvor: <a href="https://www.nga.gov/artworks/69968-amazon-preparing-battle-queen-antiope-or-hippolyta-or-armed-venus">Nacionalna galerija za umjetnost</a></p>
+                        <div class="opis">
+                            <ul>
+                                <li><a href="https://en.wikipedia.org/wiki/Pierre-Eug%C3%A8ne-Emile_H%C3%A9bert">Pierre-Eugène-Emile Hébert</a>
+                                <li>Bronca
+                                <li>Dimenzije: 65.3 × 40.6 × 26.6 cm
+                                <li>Trenutačno je izložena u <a href="https://www.nga.gov/artworks/44104-apollo">Nacionalnoj galeriji umjetnosti, Washington, US.</a>
+                            </ul>
+                            <br>
+                            <p>
+                                Skulptura prikazuje Amazonsku ratnicu kako se priprema za borbu zatezanjem velikog luka. Nije jasno je li ratnica u pitanju <a href="https://en.wikipedia.org/wiki/Antiope_(Amazon)">Kraljica Antiopa</a> ili <a href="https://en.wikipedia.org/wiki/Hippolyta">Hipolita</a> ili pak božica Venera. 
+                                Pierre-Eugène-Emile Hébert je bio francuski skulptor. Njegov otac, <a href="https://en.wikipedia.org/wiki/Pierre_H%C3%A9bert">Pierre Hébert</a>, i sestra, <a href="https://en.wikipedia.org/wiki/H%C3%A9l%C3%A8ne_Bertaux">Émile Hébert</a>, su također bili skulptori.
+                            </p>
+                        </div>
+                    </section>
+                    <div class="ad-2">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="left">
+                    <p>Muzeji/galerije spomenuti:</p>
+                    <p><a href="https://britishart.yale.edu/" target="_blank">Yale Centar za Britansku Umjetnost</a></p>
+                    <p><a href="https://www.nga.gov/" target="_blank">Nacionalna Galerija Umjetnosti</a></p>
+                    <p><a href="https://www.museivaticani.va/content/museivaticani/en.html" target="_blank">Vatikanski muzej</a></p>
+                    <p><a href="https://thewalters.org/" target="_blank">Umjetnički Muzej Wlaters</a></p>
+                    <p><a href="https://www.metmuseum.org/" target="_blank">Muzej Umjetnosti Metropolitan</a></p>
+                </div>
+                <div class="center">
+                    <p>Umjetnički pokreti:</p>
+                    <p>Neoklasicizam</p>
+                    <p>Rokoko</p>
+                    <p>Luminizm</p>
+                    <p>Hudson rijeka</p>
+                    <p>Romantizam</p>
+                    <p>Antika</p>
+                    <p>Renesansa</p>
+                </div>
+                <div class="right">
+                    <p>Izradila:</p>
+                    <p>Viktorija Đurđa</p>
+                    <p>vdurda@student.unipu.hr</p>
+                </div>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let mybutton = document.getElementById("myBtn");
+
+                window.onscroll = function () {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                };
+
+                window.topFunction = function () {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                };
+            });
+        </script>
+    </body>
