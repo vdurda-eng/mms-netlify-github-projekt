@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Viktorija Đurđa</title>
+        <style>
+            /* --- Generalno --- */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: system-ui, -apple-system, sans-serif;
+                background-color: #d3bfd3;
+                color: #210124;
+                line-height: 1.6;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            main {
+                flex: 1;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            /* --- Navbar --- */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #542b5f;
+                padding: 15px 20px;
+            }
+            .lijevo {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .navbar a {
+                color: #c0a4c1;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            .navbar a:hover {
+                color: whitesmoke;
+            }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #c0a4c1;
+                min-width: 300px;
+                border-radius: 5px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                margin-top: 5px;
+            }
+            .dropdown-content p {
+                color: #210124;
+                display: block;
+                padding: 5px;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            .dropdown-content a {
+                color: black;
+                display: block;
+                padding: 5px;
+                font-weight: normal;
+                text-shadow: none;
+            }
+            .dropdown-content a:hover {
+                background-color: whitesmoke;
+                color: #210124;
+            }
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            /* --- Header --- */
+            h1 {
+                color: #542b5f;
+                font-size: 2rem;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            main p {
+                color:#210124;
+                margin-bottom: 20px;
+            }
+            main b {
+                color: #542b5f;
+            }
+            .brojevi {
+                margin-left: 25px;
+                margin-bottom: 20px;
+            }
+            /* --- Stranica --- */
+            .main-content {
+                flex: 1;
+            }
+            .pic {
+                max-width: 150px;
+                width: 90%;
+                height: auto;
+            }
+            /* --- Footer --- */
+            .footer{
+                background-color: #542b5f;
+                color: #c0a4c1;
+                padding: 40px;
+                margin-top: 20px;
+            }
+            .footer-content {
+                display: flex;
+                justify-content: center;
+                gap: 100px;
+                flex-wrap: wrap;
+            }
+            .footer a {
+                color: #c0a4c1;
+                text-decoration: none;
+            }
+            .footer-content a:hover {
+                color:#935FA7;
+            }
+            /* --- tableti --- */
+            @media (max-width: 1024px) {
+                main {
+                    padding: 15px;
+                }
+                .layout {
+                    gap: 20px
+                }
+            }
+            /* --- mobitel --- */
+            @media (max-width: 768px) {
+                body {
+                    font-size: 15px;
+                    line-height: 1.5;
+                }
+                main {
+                    padding: 10px;
+                }
+                .navbar {
+                    flex-direction: row;
+                    gap: 10px;
+                    justify-content: space-between;
+                }
+                .navbar a {
+                    font-size: 16px;
+                }
+                .footer-content {
+                    flex-direction: row;
+                    gap: 20px;
+                    justify-content: space-between;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="lijevo">
+                <a href="index.html">Viktorija Đurđa</a>
+                <div class="dropdown">
+                    <a href="#" id="pokreti">Pokreti▾</a>
+                    <div class="dropdown-content">
+                        <p>Antika</p>
+                        <a href="#belvedre-apollo">Apolon Belvederski (AD 120. - 140.)</a>
+                        <p>Renesansa</p>
+                        <a href=#victorious-apollo">Apolon pobjednički nad Pitonom (1591.)</a>
+                        <a href="#lucretia">Lukrecija Ubada Sebe (15.-16. st.)</a>
+                        <a href="#apollo">Apolon (16.st.)</a>
+                        <a href="#toad">Krastača s krastačom (16.st.)</a>
+                        <p>Neoklasicizam</p>
+                        <a href="#fan">Dizajn za lepezu (1775.)</a>
+                        <a href="#venus">Trijumf Venere s tri gracije (18.st.)</a>
+                        <a href="#latona">Latona i njezina djeca, Apolon i Dijana (1870./74.)</a>
+                        <p>Romantizam</p>
+                        <a href="#italian-coast">Prizor talijanske obale s ruševnim tornjem (1838.)</a>
+                        <p>Rokoko</p>
+                        <a href="#music">Alegorija glazbe (1764.)</a>
+                        <p>Luminizam</p>
+                        <a href="#orchid">Orhideja Cattleya i tri kolibrija (1871.)</a>
+                        <p>Škola rijeke Hudson</p>
+                        <a href="#parthenon">Ruševine Partenons (1880.)</a>
+                        <a href="#spirit">Duh rata (1851.)</a>
+                    </div>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+        </nav>
+        <main>
+            <h1>
+                <img src="nice-thumbs-up.png" class="pic">
+                About
+            </h1>
+            <p>
+                Ovaj projekt je napravljen za svrhe vježba kolegija <b>Multimedijalni Sustavi</b>.
+            </p>
+            <p>
+                Na ovoj stranici može pronaći neke od <b>mojih najdržih umjetničkih dijelova</b>, te malo informacija o nijma: umejetnik, tehnika, dimenzije, umjetnički pokret, gdje je trenutačno izloženo, i barem jedan paragraf objašnjavajući što se nalazi na slikama.
+            </p>
+            <p>
+                U zaglavlju možete pronači <b>moje ime</b>, koje također služi kao gumb za početnu stranicu, zatim <b>padajući izbornik</b> sa svim ujmetničkim djelima podjeljeni na umjetničke pokrete, klikom na ime djela odmah će vas uputiti do njega. Zadnja stavka je <b>'About'</b> koji vas, naravno, upućuje na ovaj dio stranice.<br>
+                Na lijevom dijelu stranice možete pronaći sadržaj, ovdje su djela raspoređene kako su prikazana na stranici. Klikom na ime djela će vas uputiti na sekciju sa tim djelom.<br>
+            </p>
+            <p>Također napraljeno za ovaj projekt su <b>'reklame'</b> napravljene uz pomoća Canve:</p>
+            <ol class="brojevi">
+                <li>Prva reklama će vas uputiti na stranicu Wikipedie o Angelici Kauffman, jedna od umjetnica čija djela su prikazna ovdje. U pozadini je smeđa boja, the prvi paragraf o Angelici Kauffman sa njezine Wikipedia stranice. Na sredini je također prikazan njezin poretret, te napisano "Saznajte više o Angelici Kauffmann na Wikipedia.com" na engleskom jeziku.</li>
+                <li>Druga reklama će vas uputiti na stranicu Yale centra za Britansku umjetnost. U pozadini je slika 'The Wave' od C.R.W. Nevinson-a trenutačno izložena u Yale-u, na slici je prikazan logo Yale.</li>
+                <li>Treća reklama će vas uputiti na stranicu muzeja umjetnosti Metropolitan. U pozadinin je svijetal plava boja, uokvirena tamnijom plavom, u sredinin je zgrada MET-a, a sa svake strane zgrade je logo MET-a.</li>
+            </ol>
+            <p>
+                U <b>podnožju</b> možete pronači muzeje i galerije spomentute, klikom na ime vas upućuju na nijhove stranice.<br>
+                Podred njih su napisani umjetnički pokreti spomenuti na ovoj stranici, kilkom na njihovo ime vas upućuje na Wikipedia stranicu o njim.<br>
+                Na kraju je <b>moje ime</b> i <b>unipu mail</b>.
+            </p>
+            <p>
+                Cijeli ovaj projekt je naprvaljen u <b>html</b>, <b>css</b>, i <b>javascript-u</b>, prvo napisan u <b>VS Codu</b>, zatim je prebačen u respiratory na <b>GitHub-u</b>, taj respiratory je spojen sa <b>Netlifly-em</b> koji je objavio ovu stranicu na internet.
+            </p>
+        </main>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="left">
+                    <p>Muzeji/galerije spomenuti:</p>
+                    <p><a href="https://britishart.yale.edu/" target="_blank">Yale Centar za Britansku Umjetnost</a></p>
+                    <p><a href="https://www.nga.gov/" target="_blank">Nacionalna Galerija Umjetnosti</a></p>
+                    <p><a href="https://www.museivaticani.va/content/museivaticani/en.html" target="_blank">Vatikanski muzej</a></p>
+                    <p><a href="https://thewalters.org/" target="_blank">Umjetnički Muzej Wlaters</a></p>
+                    <p><a href="https://www.metmuseum.org/" target="_blank">Muzej Umjetnosti Metropolitan</a></p>
+                </div>
+                <div class="center">
+                    <p>Umjetnički pokreti:</p>
+                    <p><a href="https://hr.wikipedia.org/wiki/Neoklasicizam" target="_blank">Neoklasicizam</a></p>
+                    <p><a href="https://hr.wikipedia.org/wiki/Rokoko" target="_blank">Rokoko</a></p>
+                    <p><a href="https://en.wikipedia.org/wiki/Luminism_(American_art_style)" target="_blank">Luminizm</a></p>
+                    <p><a href="https://hr.wikipedia.org/wiki/%C5%A0kola_rijeke_Hudson" target="_blank">Škola Hudson rijeka</p>
+                    <p><a href="https://hr.wikipedia.org/wiki/Romantizam" target="_blank">Romantizam</a></p>
+                    <p><a href="https://hr.wikipedia.org/wiki/Antika" target="_blank">Antika</p>
+                    <p><a href="https://hr.wikipedia.org/wiki/Renesansa" target="_blank">Renesansa</a></p>
+                </div>
+                <div class="right">
+                    <p>Izradila:</p>
+                    <p>Viktorija Đurđa</p>
+                    <p>vdurda@student.unipu.hr</p>
+                </div>
+            </div>
+        </footer>
+            
